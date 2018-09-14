@@ -45,20 +45,17 @@ const fight = () => {
 
 		console.log(`Ogre has ${dude.enemy.HP}HP`);
 		console.log(`Dude has ${ogre.enemy.HP}HP`);
-	}
-	if (dude.enemy.HP > 0) {
-		// dude inflicts damage to Bob
-		console.log(dude.attack());
-	} else {
-		return `${dude.name} says: Ah. Yes. Another head to add to my collection.`;
-	}	
 
-	if (ogre.enemy.HP > 0) {
-		// OGRE RETALIATES
+		console.log(dude.attack());
+		if (dude.enemy.HP <= 0) {
+			return `${dude.name} says: Ah. Yes. Another head to add to my collection.`;
+		}	
+
 		console.log(ogre.attack());;
-	} else {
-		return `${ogre.name} says: Finally. Can I read in peace now?`;
-	}
+
+		if (ogre.enemy.HP <= 0) {
+			return `${ogre.name} says: Finally. Can I read in peace now?`;
+		}
 	}
 }
 
