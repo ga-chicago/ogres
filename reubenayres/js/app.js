@@ -42,13 +42,19 @@ const ogre = {
 const adventurer = {
     name: "reuben",
     hitpoints: 100,
-    attackPower: 10,
     attack: function () {
-        // reduce the hitpoints by "attackPower"
-
+        // reduce the ogre hitpoints by "attackPower"
+        ogre.hitpoints -= 10;
         // say what happened
+
     }
 }
+
+adventurer.attack();
+console.log(ogre);
+console.log(adventurer);
+
+
 
 
 // make the rounds happen automatically
