@@ -24,6 +24,38 @@ Doing this efficiently requires planning. If you just started coding immediately
 
 console.log("ogres")
 
+const game = {
+    play: function() {
+        // while ogre is not dead and adv is not dead 
+        while(!ogre.isDead() && !adventurer.isDead()) {
+            // o atacks a
+            ogre.attack();
+            // check if adv dead
+            if(adventurer.hitpoints > 0) {
+                // adv attack o
+                adventurer.attack()
+            }
+            // check if ogre dead    
+        }
+        console.log("Game over.")
+        // figure out who won
+        let winner;
+        if(ogre.isDead()) {
+            winner = adventurer;
+        }
+        else {
+            winner = ogre;
+        }
+        // print stats
+        console.log(winner + " wins!")
+
+    },
+    printStats: function() {
+        console.log(ogre.name + ", (the ogre): " + ogre.hitpoints + " points.");
+        console.log(adventurer.name + ", (the adventurer): " + adventurer.hitpoints + " points.");
+    }
+}
+
 
 const ogre = {
     name: "oof",
@@ -31,14 +63,23 @@ const ogre = {
     attack: function () {
         // hurt the adventurer.  how?
 
-        // generate random value 
+        // generate random value bt 1 and 20
         const attackPower = Math.floor((Math.random() * 20) + 1)
 
         // reduce adv's hp by that value
         adventurer.hitpoints -= attackPower;
 
         // say what happened
-        console.log("Ogre attacks!!! Adventurer is " + attackPower + " weaker and has " + adventurer.hitpoints + " points left!");
+        console.log("Ogre attacks (  "+  attackPower + ")!");
+        game.printStats();
+    },
+    isDead: function () {
+        // return true if ogre dead, false otherwise
+        if(ogre.hitpoints <= 0) {
+            return true
+        } else {
+            return false
+        }
     }
 }
 
@@ -50,29 +91,24 @@ const adventurer = {
         ogre.hitpoints -= 10;
         
         // say what happened
-        console.log("Adventurer attacks! (10). Ogre is now down to " + ogre.hitpoints + " points");
-    }   
-}
-
-adventurer.attack();
-console.log(ogre);
-console.log(adventurer);
-
-
-
-// while ogre is not dead and adv is not dead 
-while(ogre.hitpoints > 0 && adventurer.hitpoints > 0) {
-    // o atacks a
-    ogre.attack();
-    // check if adv dead
-    if(adventurer.hitpoints > 0) {
-        // adv attack o
-        adventurer.attack()
+        console.log("Adventurer attacks! (10)");
+        game.printStats();
+    },
+    isDead: function () {
+        // return true if ogre dead, false otherwise
+        if(adventurer.hitpoints <= 0) {
+            return true
+        } else {
+            return false
+        }
     }
-
-    // check if ogre dead    
-
 }
+
+
+game.play();
+
+
+
 
 
 
