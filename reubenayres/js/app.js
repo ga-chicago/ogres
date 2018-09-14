@@ -32,10 +32,13 @@ const ogre = {
         // hurt the adventurer.  how?
 
         // generate random value 
+        const attackPower = Math.floor((Math.random() * 20) + 1)
 
         // reduce adv's hp by that value
+        adventurer.hitpoints -= attackPower;
 
         // say what happened
+        console.log("Ogre attacks!!! Adventurer is " + attackPower + " weaker and has " + adventurer.hitpoints + " points left!");
     }
 }
 
@@ -45,9 +48,10 @@ const adventurer = {
     attack: function () {
         // reduce the ogre hitpoints by "attackPower"
         ogre.hitpoints -= 10;
+        
         // say what happened
-
-    }
+        console.log("Adventurer attacks! (10). Ogre is now down to " + ogre.hitpoints + " points");
+    }   
 }
 
 adventurer.attack();
