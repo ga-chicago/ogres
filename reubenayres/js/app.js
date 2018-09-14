@@ -60,9 +60,19 @@ console.log(adventurer);
 
 
 
+// while ogre is not dead and adv is not dead 
+while(ogre.hitpoints > 0 && adventurer.hitpoints > 0) {
+    // o atacks a
+    ogre.attack();
+    // check if adv dead
+    if(adventurer.hitpoints > 0) {
+        // adv attack o
+        adventurer.attack()
+    }
 
-// make the rounds happen automatically
-    // 
+    // check if ogre dead    
+
+}
 
 
 
