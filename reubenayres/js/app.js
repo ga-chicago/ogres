@@ -30,7 +30,7 @@ const game = {
         while(!ogre.isDead() && !adventurer.isDead()) {
             // o atacks a
             ogre.attack();
-            // check if adv dead
+            // check if adv not dead
             if(adventurer.hitpoints > 0) {
                 // adv attack o
                 adventurer.attack()
@@ -109,7 +109,56 @@ game.play();
 
 
 
+// By listing the first six prime numbers: 2, 3, 5, 7, 11, and 13, we can see that the 6th prime is 13.
 
+// What is the 10,001 st prime number?
+
+const checkPrime = (num) => {
+
+    // loop up to highest integer <= square root
+    const rootOfNum = Math.floor(Math.sqrt(num))
+    for(let i = 2; i <= rootOfNum; i++) {
+
+        // check if num can be evenly divided by i for(any i between 2 and the sq root of num)
+
+        // if so, it's not a prime
+        if(num % i == 0) {
+            return false;
+        }
+
+    } 
+    // we're finished.  
+    // since we went all the way through the loop and got here, 
+    // we now know num is not evenly divisible by any integers between 2 and sqrt(num) 
+    return true;
+}
+
+// 2, 3, 5, 7
+// build a list of primes in a for loop  -- put each prime in an array
+// array.length === 10001, means i have the 10001st prime
+
+let primes = [];
+
+let i = 2;
+
+while(primes.length < 10001) {
+
+    if (checkPrime(i)) {
+        primes.push(i)
+    }
+
+    i++;
+}
+console.log(primes[primes.length - 1])
+
+
+
+
+var cheese = "cheddar"
+var myFunction = function() {
+    
+}
+const youCantSeeThis = "secret"
 
 
 
